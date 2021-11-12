@@ -1,4 +1,6 @@
+-- Variables
 local QBCore = exports['qb-core']:GetCoreObject()
+local GoldBarsAmount = 0
 
 local ItemList = {
     ["goldchain"] = math.random(60, 110),
@@ -25,10 +27,9 @@ local MeltItems = {
     ["goldchain"] = 32,
 }
 
-local GoldBarsAmount = 0
+-- Events
 
-RegisterServerEvent("qb-pawnshop:server:sellPawnItems")
-AddEventHandler("qb-pawnshop:server:sellPawnItems", function()
+RegisterNetEvent('qb-pawnshop:server:sellPawnItems', function()
     local src = source
     local price = 0
     local Player = QBCore.Functions.GetPlayer(src)
@@ -47,8 +48,7 @@ AddEventHandler("qb-pawnshop:server:sellPawnItems", function()
     end
 end)
 
-RegisterServerEvent("qb-pawnshop:server:sellHardwarePawnItems")
-AddEventHandler("qb-pawnshop:server:sellHardwarePawnItems", function()
+RegisterNetEvent('qb-pawnshop:server:sellHardwarePawnItems', function()
     local src = source
     local price = 0
     local Player = QBCore.Functions.GetPlayer(src)
@@ -68,8 +68,7 @@ AddEventHandler("qb-pawnshop:server:sellHardwarePawnItems", function()
 
 end)
 
-RegisterServerEvent("qb-pawnshop:server:getGoldBars")
-AddEventHandler("qb-pawnshop:server:getGoldBars", function()
+RegisterNetEvent('qb-pawnshop:server:getGoldBars', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if GoldBarsAmount > 0 then
@@ -86,8 +85,7 @@ AddEventHandler("qb-pawnshop:server:getGoldBars", function()
     end
 end)
 
-RegisterServerEvent("qb-pawnshop:server:sellGold")
-AddEventHandler("qb-pawnshop:server:sellGold", function()
+RegisterNetEvent('qb-pawnshop:server:sellGold', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local price = 0
@@ -106,8 +104,7 @@ AddEventHandler("qb-pawnshop:server:sellGold", function()
     end
 end)
 
-RegisterServerEvent("qb-pawnshop:server:meltItems")
-AddEventHandler("qb-pawnshop:server:meltItems", function()
+RegisterNetEvent('qb-pawnshop:server:meltItems', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local goldbars = 0
@@ -149,6 +146,8 @@ AddEventHandler("qb-pawnshop:server:meltItems", function()
         end
     end
 end)
+
+-- Callback
 
 QBCore.Functions.CreateCallback('qb-pawnshop:server:getSellPrice', function(source, cb)
     local retval = 0
