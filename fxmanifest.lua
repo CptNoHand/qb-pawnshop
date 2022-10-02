@@ -5,9 +5,21 @@ description 'QB-Pawnshop'
 version '1.0.0'
 
 shared_scripts {
-	'config.lua'
+	'@qb-core/shared/locale.lua',
+	'config.lua',
+	'locales/de.lua',
 }
 
-server_script 'server/main.lua'
+server_scripts {
+	'@oxmysql/lib/MySQL.lua',
+	'server/main.lua'
+}
 
-client_script 'client/main.lua'
+client_scripts {
+	'@PolyZone/client.lua',
+	'@PolyZone/BoxZone.lua',
+	'@PolyZone/ComboZone.lua',
+    'client/main.lua'
+}
+
+lua54 'yes'
